@@ -1,5 +1,8 @@
 import { useRouter } from 'next/router';
 import { monthStrings } from '../../common/constants';
+import ResultsTitle from '../../components/events/results-title';
+import { getFilteredEvents } from '../../data/dummy-data';
+
 
 export default function SpecificEvent(){
   const route = useRouter();
@@ -34,9 +37,15 @@ const InvalidUrlResponse = () => (
   <h1>Invalid URL. Check URL query parameters</h1>
 );
 
-const EventsForTheMonth = (filteredMonth, filteredYear) => (
-  <div>
-    <h1>Events for {monthStrings[+filteredMonth]} {filteredYear}:</h1>
-    <div>Here they be:</div>
-  </div>
-);
+const EventsForTheMonth = (filteredMonth, filteredYear) => {
+  const date = new Date(filteredYear, filteredMonth + 1);
+
+
+  return (
+    <div>
+      <ResultsTitle date={date} />
+      <h1>Events for {monthStrings[+filteredMonth]} {filteredYear}:</h1>
+      <div>Here they be:</div>
+    </div>
+  );
+}
