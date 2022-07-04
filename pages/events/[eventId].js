@@ -1,10 +1,9 @@
-import { Fragment } from 'react';
 import { useRouter } from 'next/router';
 import { getEventById } from '../../data/dummy-data';
 import EventSummary from '../../components/event-detail/event-summary';
 import EventLogistics from '../../components/event-detail/event-logistics';
 import EventContent from '../../components/event-detail/event-content';
-
+import Button from '../../components/ui/button';
 
 export default function SpecificEvent(){
   const router = useRouter();
@@ -12,20 +11,31 @@ export default function SpecificEvent(){
   const eventId = router.query.eventId;
   const event = getEventById(eventId);
 
-  if (!event) return <p>No event found!</p>;
-
-  return (
-    <Fragment>
-      <EventSummary title={event.title}/>
-      <EventLogistics
-        date={event.date}
-        location={event.location}
-        image={event.image}
-        imageAlt={event.title}
-      />
-      <EventContent>
-        <p>{event.description}</p>
-      </EventContent>
-    </Fragment>
-  )
+  return (event)
+    ? Event(event)
+    : NoEventsFound()
 }
+
+const Event = (event) => (
+  <>
+    <EventSummary title={event.title}/>
+    <EventLogistics
+      date={event.date}
+      location={event.location}
+      image={event.image}
+      imageAlt={event.title}
+    />
+    <EventContent>
+      <p>{event.description}</p>
+    </EventContent>
+  </>
+);
+
+const NoEventsFound = () => (
+  <>
+    <p>No event found!</p>
+    <div className='center'>
+      <Button link='/events' >Back to All Events</Button>
+    </div>
+  </>
+);
