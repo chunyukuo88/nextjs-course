@@ -1,32 +1,34 @@
 const DUMMY_EVENTS = [
   {
     id: 'e1',
-    title: 'Programming for everyone',
+    title: 'Take a trip down under!',
     description:
-      'Everyone can learn to code! Yes, everyone! In this live event, we are going to go through all the key basics and get you started with programming as well.',
-    location: 'Somestreet 25, 12345 San Somewhereo',
-    date: '2022-05-12',
-    image: 'images/coding-event.jpg',
+      'Experience an interactive and energetic fusion of Australian didgeridoo music, culture, puppetry, comedy, character building, storytelling, and audience movement.',
+    location: 'Westerville Library',
+    date: '2022-07-09',
+    image: 'images/didgeridoo.jpg',
     isFeatured: false,
   },
   {
     id: 'e2',
-    title: 'Networking for introverts',
+    title: 'What\'s In Your Water',
     description:
-      "We know: Networking is no fun if you are an introvert person. That's why we came up with this event - it'll be so much easier. Promised!",
-    location: 'New Wall Street 5, 98765 New Pork',
-    date: '2022-05-30',
+      'Learn key facts about lead in your drinking water. Water pipes can be made of different materials. Learn how to identify pipes in your home and receive a water testing strip.\n' +
+      '\n' +
+      'Register now to claim your free kit. Available for pickup at the desk on the second floor beginning July 13 at 9am.',
+    location: 'Westerville Library',
+    date: '2022-07-13',
     image: 'images/introvert-event.jpg',
     isFeatured: true,
   },
   {
     id: 'e3',
-    title: 'Networking for extroverts',
+    title: '4th Friday on the Lawn: Percussion Party',
     description:
-      'You probably need no help with networking in general. But focusing your energy correctly - that is something where most people can improve.',
-    location: 'My Street 12, 10115 Broke City',
-    date: '2022-04-10',
-    image: 'images/extrovert-event.jpg',
+      'Take a musical trip with different traditional rhythms, songs, and percussion instruments - from drums to boomwhackers - led by Joanie Calem while in Uptown Westerville for 4th Friday.',
+    location: 'Westerville Library',
+    date: '2022-07-22',
+    image: 'images/guitar.jpg',
     isFeatured: true,
   },
 ];
@@ -44,7 +46,8 @@ export function getFilteredEvents(dateFilter) {
 
   let filteredEvents = DUMMY_EVENTS.filter((event) => {
     const eventDate = new Date(event.date);
-    return eventDate.getFullYear() === year && eventDate.getMonth() === month - 1;
+    const result = eventDate.getFullYear() === +year && eventDate.getMonth() === +month - 1;
+    return result;
   });
 
   return filteredEvents;

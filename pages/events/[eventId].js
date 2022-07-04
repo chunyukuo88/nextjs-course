@@ -8,7 +8,6 @@ import ErrorAlert from '../../components/ui/error-alert';
 
 export default function SpecificEvent(){
   const router = useRouter();
-
   const eventId = router.query.eventId;
   const event = getEventById(eventId);
 

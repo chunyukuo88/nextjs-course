@@ -7,9 +7,7 @@ import { getFilteredEvents } from '../../data/dummy-data';
 
 export default function SpecificEvent(){
   const route = useRouter();
-
   const filterData = route.query.slug;
-
   return (filterData)
     ? WithFilterData(filterData)
     : WithoutFilterData();
@@ -21,7 +19,6 @@ const WithoutFilterData = () => (
 
 const WithFilterData = (filterData) => {
   const [filteredYear, filteredMonth] = [filterData[0], filterData[1]];
-
   return (queryParamsNotValidMonthAndYear(filteredMonth, filteredYear))
     ? InvalidUrlResponse()
     : EventsForTheMonth(filteredMonth, filteredYear);
@@ -39,13 +36,12 @@ const InvalidUrlResponse = () => (
 );
 
 const EventsForTheMonth = (filteredMonth, filteredYear) => {
-  const date = new Date(filteredYear, filteredMonth);
+  const date = new Date(filteredYear, (+filteredMonth - 1).toString());
   const events = getFilteredEvents({ year: filteredYear, month: filteredMonth});
-
   return (
     <div>
       <ResultsTitle date={date} />
-      <h1>Events for {monthStrings[+filteredMonth]} {filteredYear}:</h1>
+      <h1>Events for {monthStrings[+filteredMonth - 1]} {filteredYear}:</h1>
       <div>Here they be:</div>
       <EventList events={events} />
     </div>
