@@ -13,18 +13,19 @@ export default function SpecificEvent(){
     : WithoutFilterData();
 }
 
+
 const WithoutFilterData = () => (
   <div className='center'>Loading...</div>
 );
 
 const WithFilterData = (filterData) => {
   const [filteredYear, filteredMonth] = [filterData[0], filterData[1]];
-  return (queryParamsNotValidMonthAndYear(filteredMonth, filteredYear))
+  return (queryParamsAreInvalid(filteredMonth, filteredYear))
     ? InvalidUrlResponse()
     : EventsForTheMonth(filteredMonth, filteredYear);
 };
 
-const queryParamsNotValidMonthAndYear = (month, year) => {
+const queryParamsAreInvalid = (month, year) => {
   const currentYear = new Date().getFullYear();
   const queryParamsAreNotNumbers = (isNaN(month) || isNaN(year));
   const monthOrYearOutOfRange = (month < 1 || month > 12 || year < currentYear || year > currentYear + 1);

@@ -6,11 +6,8 @@ import ArrowRightIcon from '../icons/arrow-right-icon';
 
 export default function EventItem(props){
   const { title, image, date, location, id } = props;
-  const humanReadableDate = new Date(date).toLocaleDateString('en-US', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  });
+
+  const humanReadableDate = getHumanReadableDate(date);
   const formattedAddress = location.replace(', ', '\n');
   const exploreLink = `/events/${id}`;
 
@@ -38,4 +35,15 @@ export default function EventItem(props){
       </div>
     </li>
   );
+}
+
+const getHumanReadableDate = (date) => {
+  const adjustedDate = new Date(date);
+  adjustedDate.setDate(adjustedDate.getDate() + 1);
+  const humanReadableDate = new Date(adjustedDate).toLocaleDateString('en-US', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+  return humanReadableDate;
 }

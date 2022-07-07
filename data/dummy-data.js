@@ -31,6 +31,26 @@ const DUMMY_EVENTS = [
     image: 'images/guitar.jpg',
     isFeatured: true,
   },
+  {
+    id: 'e4',
+    title: 'Website Project Launch -- Free Code Camp Columbus',
+    description:
+      'Meet up with fellow Free Code Campers as we launch an improvement project of our React.js website. We will have a backlog of work and developers with React experience available to get you started. This is the perfect chance to learn while contributing to open source software. Coding newbies welcome and encouraged.',
+    location: '1733 W Lane Ave',
+    date: '2022-07-10',
+    image: 'images/fcc.jpg',
+    isFeatured: true,
+  },
+  {
+    id: 'e5',
+    title: 'Japanese Festival',
+    description:
+      'Matsuricon, one of Columbus\' local anime conventions is returning this summer August 12-14 at the down town Hyatt/Greater Columbus Convention center.',
+    location: 'Columbus Convention Center',
+    date: '2022-08-12',
+    image: 'images/fuji.jpg',
+    isFeatured: true,
+  },
 ];
 
 export function getFeaturedEvents() {
