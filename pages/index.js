@@ -13,7 +13,6 @@ export default function HomePage(){
     router.push(fullPath);
   }
 
-
   return (
     <>
       <EventsSearch onSearch={findEventsHandler} />

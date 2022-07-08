@@ -16,7 +16,7 @@ export default function EventItem(props){
       <img src={'/' + image} alt='Preview image of the event.' />
       <div className={classes.content}>
           <section>
-            <h2>{title}></h2>
+            <h2 className={classes.title}>{title}></h2>
             <div className={classes.date}>
               <DateIcon></DateIcon>
               <time>{humanReadableDate}</time>
